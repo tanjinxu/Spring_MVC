@@ -31,8 +31,6 @@ $(function(){
   </div>
   <input type="submit" value="搜索" class="btn btn-info">
 </form><br>
-
-
 <a href="${pageContext.request.contextPath }/add.action" class="btn btn-primary" style="position:fixed;right:0px;top:170px;">添加学生信息</a>
 <table width="100%" border=1 class="table table-hover">
 <tbody>

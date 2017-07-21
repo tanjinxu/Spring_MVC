@@ -22,10 +22,10 @@
 		</bean>
 
 		<context:component-scan base-package="cn.itcast" />
-
-		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> 
+		<mvc:annotation-driven />
+		<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> 
 	
-		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" /> -->
 		
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         	<property name="prefix" value="/WEB-INF/jsp/" />  
