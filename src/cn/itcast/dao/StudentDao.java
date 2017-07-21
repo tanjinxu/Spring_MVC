@@ -21,8 +21,8 @@ public class StudentDao {
 
     public List<Stu> getAll(String search) {
 
-        String sql = (search == null) ? "select * from admin"
-                : "select * from admin where name like '%" + search + "%'";
+        String sql = (search == null) ? "select * from admin order by id desc"
+                : "select * from admin where name like '%" + search + "%'  order by id desc";
         return this.JdbcTemplate.query(sql, new StuRowMapper());
     }
 

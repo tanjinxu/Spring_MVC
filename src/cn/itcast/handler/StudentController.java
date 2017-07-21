@@ -23,8 +23,7 @@ public class StudentController {
     private StuService stuService;
 
     @RequestMapping("getAll.action")
-    public ModelAndView getAll(@RequestParam(value = "search", defaultValue = "", required = false) String search,
-            ModelAndView mv) {
+    public ModelAndView getAll(@RequestParam(value = "search", required = false) String search, ModelAndView mv) {
         List<Stu> list = stuService.getAll(search);
         mv.addObject("list", list);
         mv.addObject("search", search);
