@@ -17,7 +17,7 @@ public class LoginService {
     private LoginDao loginDao;
 
     public User doLogin(User user) {
-        return loginDao.doLogin(user);
+        return loginDao.doLogin(user);// @@
     }
 
 }
