@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<tr ng-repeat="x in message" >
+	<!-- 		<td style="{{($index+1) % 2 ?'background-color: red':''}}">{{ $index+1 }}</td>
+			<td style="{{($index+1) % 2 ?'background-color: red':''}}">{{ x.Name }}</td>
+			<td style="{{($index+1) % 2 ?'background-color: red':''}}">{{ x.City }}</td>
+			<td style="{{($index+1) % 2 ?'background-color: red':''}}">{{ x.Country }}</td> -->
+			
+			<!-- <td class="style-{{($index+1)%2 ? 'true' : 'false'}}">{{ $index+1 }}</td>
+			<td class="style-{{($index+1)%2 ? 'true' : 'false'}}">{{ x.Name }}</td>
+			<td class="style-{{($index+1)%2 ? 'true' : 'false'}}">{{ x.City }}</td>
+			<td class="style-{{($index+1)%2 ? 'true' : 'false'}}">{{ x.Country }}</td> -->
+			
+			<td ng-class="{style-true:($index+1) % 2}">{{ $index+1 }}</td>
+			<td ng-class="{style-true:($index+1) % 2}">{{ x.Name }}</td>
+			<td ng-class="{style-true:($index+1) % 2}">{{ x.City }}</td>
+			<td ng-class="{style-true:($index+1) % 2}">{{ x.Country }}</td>
+		</tr>
+	</table>
+</body>
+</html>

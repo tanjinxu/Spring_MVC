@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://localhost:8080/zjsun_zspring_mvc/angular.js"></script> 
+<script src="http://localhost:8080/zjsun_zspring_mvc/angular_rute.js"></script> 
+<style>
+.style-true{
+	background-color:red;
+}
+.style-false{
+	background-color:blue;
+}
+</style>
+</head>
+<body>
+<!-- 	<div ng-app="" ng-init="name='tjx';sex='男'">
+		<input type="text" ng-model="name">
+		<input type="text" ng-model="sex">
+		{{ name +' '+ sex}}
+		<span ng-bind="name+' '+sex"></span>
+	</div> -->
+	
+	
+<!-- <div ng-app="" ng-init="array=[ {name:'tjx',age:23},{name:'zy',age:24},{name:'zx',age:25}]">
+	<li ng-repeat="x in array">
+		{{ x.name +':'+ x.age }}
+	</li>
+</div> -->
+
+
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+<input type="text" ng-model="name">
+{{ name }}
+</div>
+<script type="text/javascript">
+var app = angular.module('myApp',[]);
+app.controller('myCtrl',function($scope){
+	$scope.name="谭金旭";
+});
+</script> -->
+
+<!-- <form action="" ng-app="" name="myForm">
+	<input type="email" name="myAddress" ng-model="text">
+	<span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+</form> -->
+
+
+ 
+<!-- <form action="" ng-app="myApp" ng-controller="myContrl">
+<input type="text" ng-model="g_name"></span>
+	<h1>{{ fname }}</h1>
+	<button ng-click="print1()" type="button">点击</button>
+</form>
+{{fullName()}}
+
+<script>
+	var app = angular.module("myApp",[]);
+	app.controller("myContrl",function($scope){
+		$scope.g_name = "张垚";
+		$scope.print1= function(){
+			$scope.fname = "hello" + $scope.g_name;
+		};
+		 $scope.fullName = function() {
+		        return "@@@";
+		    }
+	});
+</script> -->
+
+																					<!-- 过滤器 -->
+																					
+<!-- <form action="" ng-app="myApp" ng-controller="myContr">
+	<input type="text" ng-model="text" />
+	<li ng-repeat="x in names | filter:text | orderBy:'age'">
+		{{ (x.name | uppercase) +' '+ x.age}}
+	</li>
+</form>
+																					
+<script type="text/javascript">
+	var app = angular.module("myApp",[]);
+	app.controller("myContr",function($scope){
+		$scope.names = [{name:'aaa',age:1},{name:'bbb',age:2}];
+	});
+</script>	 -->																				
+																					
+													<!-- 服务		 -->																			
+<!-- 	$location -->																				
+<!-- <div ng-app="mapp" ng-controller="myc">																		
+<h3>{{ url }}</h3>
+</div>		
+<script type="text/javascript">
+	var app = angular.module("mapp",[]);
+	app.controller("myc",function($scope,$location){
+		$scope.url = $location.absUrl();
+	});
+</script>	 -->	
+
+<!-- $http -->		
+<!-- $timeout -->
+<!-- <div ng-app="myapp" ng-controller="myContr">
+	<input ng-model="name"></span>
+</div>
+<script type="text/javascript">
+	var app = angular.module("myapp",[]);
+	app.controller("myContr",function($scope,$timeout){
+		$scope.name="谭金旭";
+		$timeout(function(){
+			$scope.name="张垚";
+		},2000);
+	});
+</script>	 -->				
+																																			
+																					
+																					
+																					
+<!--  <div ng-app="myApp" ng-controller="myCtrl"> 
+<h1>{{theTime}}</h1>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $interval) {
+  $scope.theTime = new Date().toLocaleTimeString();
+  $interval(function () {
+      $scope.theTime = new Date().toLocaleTimeString();
+  }, 1000);
+});
+</script>	  -->														
+																					
+																					
+													<!-- http -->																			
+<!-- <div ng-app="myApp" ng-controller="myc">
+	<input type="text" ng-model="text" />
+	<li ng-repeat="x in names | filter:text | orderBy:'Country'">
+		{{ x.Name +'---'+x.Url +'---'+ x.Country}}
+	</li>
+</div>									
+									
+<script type="text/javascript">
+	var app = angular.module("myApp",[]);
+	app.controller("myc",function($scope,$http){
+		$http({
+			url:"http://localhost:8080/zjsun_zspring_mvc/1.json",
+			method:'get'
+		}).then(function successCallback(response){
+			$scope.names = response.data.sites;
+		},function errorCallback(response){});
+	});
+</script>	 -->	
+
+
+																			
+			<!-- 循环option标签 -->															
+<!-- 			<form action="" ng-app="myApp" ng-controller="myC">
+				<select ng-init="sName=names[0]" ng-model="sName" ng-options="x for x in names"></select>
+			</form>																		
+			<script type="text/javascript">
+				var app = angular.module("myApp",[]);
+				app.controller("myC",function($scope){
+					$scope.names=['baidu','google','ie'];
+				});
+			</script>	 -->	
+			
+			
+			
+			
+<!-- 			
+<table ng-app="myApp" ng-controller="myC">
+	<tr ng-repeat="x in message | orderBy:'Country'">
+		<td>{{ $index+1 }}</td>
+		<td>{{ x.Name }}</td>
+		<td>{{ x.City }}</td>
+		<td>{{ x.Country }}</td>
+	</tr>
+</table>
+<script type="text/javascript">
+	var app = angular.module("myApp", []);
+	app.controller("myC",function($scope,$http){
+		$http({
+			url:"http://localhost:8080/zjsun_zspring_mvc/1.json",
+			method:"get"
+		}).then(function successBackcall(response){
+			$scope.message = response.data.records;
+		},function errorBackcall(){});
+	});
+</script> -->
+
+
+
+
+
+<!-- 
+<div ng-app="myApp" ng-controller="myCon">
+<button ng-click="count=count+1">点击</button>
+{{ count }}
+</div>
+<script type="text/javascript">
+	var app = angular.module("myApp",[]);
+	app.controller("myCon",function($scope){
+		$scope.count = 0;
+	});
+</script> -->
+
+
+				<!-- 显示隐藏 -->
+<!-- <div ng-app="myApp" ng-controller="myCon" >
+	<div ng-show="bool">
+		<input type="name" ng-model="name">
+		<input type="sex" ng-model="sex">
+	</div>	
+	<button ng-click="toggle()" type="button">翻转</button>
+</div>
+
+<script type="text/javascript">
+	var app = angular.module("myApp",[]);
+	app.controller("myCon",function($scope){
+		$scope.name="谭金旭";
+		$scope.sex="男";
+		$scope.bool = false;
+		$scope.toggle = function(){
+			$scope.bool = !$scope.bool;
+		}
+	});
+</script> -->																
+
+<!-- <div ng-app="">
+<input type="checkbox" ng-model="bool">
+{{ bool }}
+
+<p ng-show ="bool"> 哈哈</p>
+</div> -->
+
+
+<!-- <div ng-app="">
+<input type="radio" ng-model="select" value="cat">cat<br>
+<input type="radio" ng-model="select" value="dog">dog
+
+{{ select }}
+<div ng-switch="select">
+	<p ng-switch-when="dog">
+		哈哈
+	</p>
+		<p ng-switch-when="cat">
+		呵呵
+	</p>
+</div>
+</div> -->
+
+<!-- <div ng-app="">
+	<select ng-model="model">
+	<option value="dog">dog</option>
+	<option value="pig">pig</option>
+	<option value="cat">cat</option>
+	</select>
+	
+	<div ng-switch="model">
+		<p ng-switch-when="dog">狗</p>
+		<p ng-switch-when="cat">猫</p>
+		<p ng-switch-when="pig">猪</p>
+	</div>
+</div>
+ -->
+
+
+
+
+
+
+<!-- <form name='myForm' ng-app="myapp" ng-controller="mycon" novalidate>
+	<input type="text" ng-model="name" required name="name"/>
+	<span ng-show="myForm.name.$dirty && myForm.name.$invalid">
+	<span ng-show="myForm.name.$error.required" style="color:red">不能为空！</span>
+	</span>
+	<input type="email" ng-model="email" required name="email"/>
+	<span ng-show="myForm.email.$dirty && myForm.email.$invalid">
+	<span ng-show="myForm.email.$error.required" style="color:red">不能为空！</span>
+	<span ng-show="myForm.email.$error.email" style="color:red">格式不对 ！</span>
+	</span>
+	 
+	<input type="submit" ng-disabled="myForm.email.$dirty && myForm.email.$invalid || myForm.name.$dirty && myForm.name.$invalid">
+</form>
+<script type="text/javascript">
+	var app = angular.module("myapp",[]);
+	app.controller('mycon',function($scope){
+		$scope.name='tjx';
+		$scope.email='969562237@qq.com';
+	});
+</script> -->
+
+
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+<p>{{ x1 }}</p>
+<p>{{ x2 }}</p>
+<p>{{ x3 }}</p>
+<p>{{ bool }}</p>
+<p>{{ n_bool}}</p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.x1 = "John";
+    $scope.x2 = angular.uppercase($scope.x1);
+    $scope.x3 = angular.lowercase($scope.x1);
+    $scope.bool = angular.isString($scope.x1);
+    $scope.n_bool = angular.isNumber($scope.x1);
+});
+</script> -->
+
+
+<!-- 可以使用ng-include来加载其他页面 -->
+
+<!-- <div ng-app="myapp" ng-controller="mycon">
+	<li ng-repeat="x in array">{{ x | myfilter}}</li>
+</div>
+
+<script type="text/javascript">
+var app = angular.module('myapp', []);
+app.controller('mycon', function($scope) {
+    $scope.array = [1,2,3,4,5,6,7,8];
+});
+app.filter('myfilter', function() {
+    return function(text) {
+    	if(text%2){
+    		return text;
+    	}
+    }
+});
+</script> 
+ -->
+ 
+ 
+ 
+ 
+<!-- <div ng-app="myapp">
+	<a href="#/b">百度</a>
+	<a href="#/g">谷歌</a>
+	<a href="#/f">火狐</a>
+	 <div ng-view></div>
+</div>
+
+<script>
+	var app = angular.module("myapp",['ngRoute']);
+	app.config(['$routeProvider',function($routeProvider){
+		$routeProvider
+		.when('/b',{templateUrl:'ceshi.html'})
+		.when('/g',{templateUrl:'ceshi.html'})
+		.otherwise({templateUrl:'ceshi.html'})
+	}]);
+</script> -->
+
+<div ng-app="myapp">
+<a href="#/table">加载</a>
+<div ng-view></div>
+</div>
+<script type="text/javascript" src="http://localhost:8080/zjsun_zspring_mvc/import.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

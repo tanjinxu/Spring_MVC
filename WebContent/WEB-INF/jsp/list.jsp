@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="${pageContext.request.contextPath }/1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/angular.js"></script> 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/bootstrap.css">
 <script type="text/javascript">
 $(function(){
@@ -15,8 +16,16 @@ $(function(){
 })
 </script>
 <title>学生列表</title>
+<style type="text/css">
+.tclass{
+	display:block;
+}
+.fclass{
+	display:none;
+}
+</style>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="myContr">
 <center>
 <h3>学生列表</h3><br><br><br>
 <hr width="70%"><br>
@@ -32,7 +41,7 @@ $(function(){
   <input type="submit" value="搜索" class="btn btn-info">
 </form><br>
 <a href="${pageContext.request.contextPath }/add.action" class="btn btn-primary" style="position:fixed;right:0px;top:170px;">添加学生信息</a>
-<table width="100%" border=1 class="table table-hover">
+<table width="100%" border=1 class="table table-hover" >
 <tbody>
 <tr>
 	<th>学生ID</th><th>学生姓名</th><th>学生住址</th><th>学生电话</th><th>学生年龄</th><th>学生学校</th><th>学生简介</th><th>添加时间</th><th>操作</th>
@@ -41,16 +50,16 @@ $(function(){
 <c:forEach items="${list }" var="item">
 <tr>
 	<td>${item.id }</td><td>${item.name }</td><td>${item.address }</td><td>${item.tel }</td><td>${item.age }</td><td>${item.school }</td><td>${item.test }</td><td>${item.addtime }</td>
-	<td><a href="javascript:void(0)" onclick="del(${item.id })">删除</a> | <a href="${pageContext.request.contextPath }/doEdit.action?id=${item.id}">修改</a> | <a href="javascript:void(0)" onclick="getAjax(${item.id})">查看详情</a></td>
+	<td><a href="javascript:void(0)" onclick="del(${item.id })">删除</a> | <a href="${pageContext.request.contextPath }/doEdit.action?id=${item.id}">修改</a> | <a href="javascript:void(0)" <%-- onclick="getAjax(${item.id})" --%> ng-click="angular(${item.id })">查看详情</a></td>
 </tr>
 </c:forEach> 
 
 </table>
 </center>
-<div style="display:none;border:2px solid #ccc;border-radius:10px;width:400px;height:400px;z-index:1000;position:absolute;top:200px;left:36%;background-color:white;" id="s_details">
+<div style="border:2px solid #ccc;border-radius:10px;width:400px;height:400px;z-index:1000;position:absolute;top:200px;left:36%;background-color:white;" id="s_details" ng-class={tclass:xian,fclass:yin}>
 <button type="button" class="close" aria-label="Close" style="position:relative;right:5px;" id="close"><span aria-hidden="true">&times;</span></button>
 <table class="table" style="position:relative;top:10px;">
-	<tr><td>姓名：</td><td id="t_name"></td></tr><tr><td>年龄：</td><td id="t_age"></td></tr><tr><td>电话：</td><td id="t_tel"></td></tr><tr><td>学校：</td><td id="t_school"></td></tr><tr><td>地址：</td><td id="t_address"></td></tr><tr><td>介绍：</td><td id="t_test"></td></tr><tr><td>添加时间：</td><td id="t_addtime"></td></tr>
+	<tr><td>姓名：</td><td id="t_name">{{name}}</td></tr><tr><td>年龄：</td><td id="t_age">{{age}}</td></tr><tr><td>电话：</td><td id="t_tel">{{tel}}</td></tr><tr><td>学校：</td><td id="t_school">{{school}}</td></tr><tr><td>地址：</td><td id="t_address">{{address}}</td></tr><tr><td>介绍：</td><td id="t_test">{{test}}</td></tr><tr><td>添加时间：</td><td id="t_addtime">{{addtime}}</td></tr>
 </table>
 </div>
 </body>
@@ -74,5 +83,29 @@ $(function(){
 			error:function(){alert("请稍后再试！～");}
 		});
 	}
+	
+	var app = angular.module("myApp",[]);
+	app.controller("myContr",function($scope,$http){
+		$scope.yin = true;
+		$scope.xian = false;
+		$scope.angular=function(id){
+			$http({
+				url:'/zjsun_zspring_mvc/getJson.action',
+				method:'post',
+				params:{'stu_id':id}
+			}).then(function successCallback(response){
+				$scope.name = response.data.name;
+				$scope.age = response.data.age;
+				$scope.tel = response.data.tel;
+				$scope.school = response.data.school;
+				$scope.address = response.data.address;
+				$scope.test = response.data.test;
+				$scope.addtime = response.data.addtime;
+				$scope.yin = false;
+				$scope.xian = true;
+			},function errorCallback(){});
+		};
+		
+	});
 </script>
 </html>
