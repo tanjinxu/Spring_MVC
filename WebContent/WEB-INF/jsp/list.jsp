@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="cn.itcast.bean.User"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,16 +17,16 @@ $(function(){
 </script>
 <title>学生列表</title>
 <style type="text/css">
-.tclass{
-	display:block;
-}
-.fclass{
-	display:none;
-}
+
 </style>
 </head>
 <body ng-app="myApp" ng-controller="myContr">
 <center>
+	<%
+		User user = (User)request.getSession().getAttribute("user");
+	%>
+	欢迎：
+	<%=user.getName() %>
 <h3>学生列表</h3><br><br><br>
 <hr width="70%"><br>
 <form class="form-inline"  action="${pageContext.request.contextPath }/getAll.action" method="search">
@@ -56,8 +56,8 @@ $(function(){
 
 </table>
 </center>
-<div style="border:2px solid #ccc;border-radius:10px;width:400px;height:400px;z-index:1000;position:absolute;top:200px;left:36%;background-color:white;" id="s_details" ng-class={tclass:xian,fclass:yin}>
-<button type="button" class="close" aria-label="Close" style="position:relative;right:5px;" id="close"><span aria-hidden="true">&times;</span></button>
+<div style="border:2px solid #ccc;border-radius:10px;width:400px;height:400px;z-index:1000;position:absolute;top:200px;left:36%;background-color:white;" id="s_details" ng-show="bool">
+<button type="button" class="close" aria-label="Close" style="position:relative;right:5px;" ng-click="bool=false"><span aria-hidden="true">&times;</span></button>
 <table class="table" style="position:relative;top:10px;">
 	<tr><td>姓名：</td><td id="t_name">{{name}}</td></tr><tr><td>年龄：</td><td id="t_age">{{age}}</td></tr><tr><td>电话：</td><td id="t_tel">{{tel}}</td></tr><tr><td>学校：</td><td id="t_school">{{school}}</td></tr><tr><td>地址：</td><td id="t_address">{{address}}</td></tr><tr><td>介绍：</td><td id="t_test">{{test}}</td></tr><tr><td>添加时间：</td><td id="t_addtime">{{addtime}}</td></tr>
 </table>
@@ -86,14 +86,15 @@ $(function(){
 	
 	var app = angular.module("myApp",[]);
 	app.controller("myContr",function($scope,$http){
-		$scope.yin = true;
-		$scope.xian = false;
+		$scope.bool= false;
 		$scope.angular=function(id){
 			$http({
 				url:'/zjsun_zspring_mvc/getJson.action',
 				method:'post',
 				params:{'stu_id':id}
 			}).then(function successCallback(response){
+				$scope.bool = true;
+				alert(response.data.name)
 				$scope.name = response.data.name;
 				$scope.age = response.data.age;
 				$scope.tel = response.data.tel;
@@ -101,8 +102,7 @@ $(function(){
 				$scope.address = response.data.address;
 				$scope.test = response.data.test;
 				$scope.addtime = response.data.addtime;
-				$scope.yin = false;
-				$scope.xian = true;
+
 			},function errorCallback(){});
 		};
 		
