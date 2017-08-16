@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/aop    http://www.springframework.org/schema/aop/spring-aop-4.3.xsd 
 		http://www.springframework.org/schema/tx    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
 		
-		<!-- 配置c3p0连接池@@@@@ -->
+		<!-- 配置c3p0连接池 -->
 		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 			<property name="driverClass" value="com.mysql.jdbc.Driver"/>
 			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"/>
